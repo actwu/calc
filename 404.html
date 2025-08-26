@@ -131,10 +131,24 @@ meh.textContent+='7'
 
     <a onmousedown="meh.textContent+='0'">0</a>
     <a p onmousedown="meh.textContent=
-    eval(meh.textContent)
+    calc(meh.textContent)
     ">=</a>
 </span>
 
 <script>
-meh.textContent=eval(window.location.pathname.split('/').join('').split('calc').join(''));
+    const calc=ans=> {
+         if (/^[0-9+\-*/.]+$/.test(ans)) {
+    try {
+      meh.textContent = new Function(`return ${ans}`)();
+    } catch {
+      meh.textContent = "Error";
+    }
+  }
+    }
+
+     const expr = window.location.pathname
+    .split('/').join('')
+    .replace('calc', '');
+  calc(expr);
+ 
 </script>
