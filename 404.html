@@ -3,152 +3,178 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <link rel="shortcut icon" href="https://ise.web.app/fa/20.png" type="image/x-icon">
 <title>calkyo</title>
-</head>
-<body>
-
-    <style>
+<style>
 :root {
-background: black;
-color:white;
-font-family: sans-serif;
+  background: black;
+  color: white;
+  font-family: sans-serif;
 }
 
 ::placeholder {
-color: #222;
+  color: #222;
 }
 
 ::-webkit-scrollbar {
-background: black;
+  background: black;
 }
 ::-webkit-scrollbar-thumb {
-background: #222;
+  background: #222;
 }
 
 * {
-background: transparent;
-outline: unset;
-border: unset;
-
+  background: transparent;
+  outline: unset;
+  border: unset;
 }
 
 body {
-padding:0.01in;
-display:flex;
-flex-direction:column; 
-gap:10px;
-margin:auto;
-height:100svh;
-max-width: 499px;
-justify-content:center;
-place-content:center;
-align-content:center;
+  padding: 0.01in;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: auto;
+  height: 100svh;
+  max-width: 499px;
+  justify-content: center;
+  place-content: center;
+  align-content: center;
 }
 
 span {
-display:flex;
-flex-direction:row; 
-gap:10px;
-justify-content:center;
-place-content:center;
-align-content:center;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  place-content: center;
+  align-content: center;
 }
 
 span[out] {
-display:block;
-flex-direction:row; 
-gap:10px;
-justify-content:center;
-place-content:center;
-align-content:center;
+  display: block;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  place-content: center;
+  align-content: center;
 }
+
 p {
-    min-width:0in;
+  min-width: 0in;
 }
+
 a {
-background-color: rgb(48, 48, 59);
-padding: 0.3in;
-display: flex;
-height:0.1in;
-justify-content:center;
-place-content:center;
-align-content:center;
-flex:1;
-border-radius:15px;
+  background-color: rgb(48, 48, 59);
+  padding: 0.3in;
+  display: flex;
+  height: 0.1in;
+  justify-content: center;
+  place-content: center;
+  align-content: center;
+  flex: 1;
+  border-radius: 15px;
 }
 
 [c] {
-background-color: rgb(107, 107, 168);
+  background-color: rgb(107, 107, 168);
 }
 
 [p] {
-background-color: rgb(57, 57, 156);
+  background-color: rgb(57, 57, 156);
 }
 
 [s] a {
-width:auto;
-max-width: 599px;
-flex:1;
+  width: auto;
+  max-width: 599px;
+  flex: 1;
 }
-
-    </style>
-
+</style>
+</head>
+<body>
 
 <span out>
-<p >Result</p>
-<p id="meh">hi</p>
+  <p>Result</p>
+  <p id="meh"></p>
 </span>
 
 <span s>
-<a onmousedown="
-meh.textContent=''
-">C</a>
-<a zz onmousedown="
-meh.textContent+='/'
-">/</a>
+  <a c onmousedown="press(this)">C</a>
+  <a onmousedown="press(this)">/</a>
 </span>
 <span>
-    <a onmousedown="
-meh.textContent+='7'
-">7</a>
-    <a onmousedown="meh.textContent+='8'">8</a>
-    <a onmousedown="meh.textContent+='9'">9</a>
-    <a p onmousedown="meh.textContent+='*'">x</a>
+  <a onmousedown="press(this)">7</a>
+  <a onmousedown="press(this)">8</a>
+  <a onmousedown="press(this)">9</a>
+  <a p onmousedown="press(this)">x</a>
 </span>
 <span>
-    <a onmousedown="meh.textContent+='4'">4</a>
-    <a onmousedown="meh.textContent+='5'">5</a>
-    <a onmousedown="meh.textContent+='6'">6</a>
-    <a p onmousedown="meh.textContent+='-'">-</a>
+  <a onmousedown="press(this)">4</a>
+  <a onmousedown="press(this)">5</a>
+  <a onmousedown="press(this)">6</a>
+  <a p onmousedown="press(this)">-</a>
 </span>
 <span>
-    <a onmousedown="meh.textContent+='1'">1</a>
-    <a onmousedown="meh.textContent+='2'">2</a>
-    <a onmousedown="meh.textContent+='3'">3</a>
-    <a p onmousedown="meh.textContent+='+'">+</a>
+  <a onmousedown="press(this)">1</a>
+  <a onmousedown="press(this)">2</a>
+  <a onmousedown="press(this)">3</a>
+  <a p onmousedown="press(this)">+</a>
 </span>
 <span>
-
-    <a onmousedown="meh.textContent+='0'">0</a>
-    <a p onmousedown="calc(meh.textContent">=</a>
+  <a onmousedown="press(this)">0</a>
+  <a p onmousedown="press(this)">=</a>
 </span>
 
 <script>
-    const calc=ans=> {
-         if (/^[0-9+\-*/().]+$/.test(ans)) {
-    try {
-      meh.textContent = new Function(`return ${ans}`)();
-    } catch {
-      meh.textContent = "Error";
+const press = el => {
+  const text = el.textContent.trim();
+  if (text === 'C') {
+    meh.textContent = '';
+  } else if (text === '=') {
+    calc(meh.textContent);
+  } else if (text === 'x') {
+    meh.textContent += '*';
+  } else {
+    meh.textContent += text;
+  }
+};
+
+const calc = expression => {
+  if (!expression) {
+    meh.textContent = '';
+    return;
+  }
+  if (!/^[0-9+\-*/().]+$/.test(expression)) {
+    meh.textContent = 'Error';
+    return;
+  }
+  if (!isBalanced(expression)) {
+    meh.textContent = 'Error';
+    return;
+  }
+  if (/[\+\-\*\/]{2,}/.test(expression)) {
+    meh.textContent = 'Error';
+    return;
+  }
+  try {
+    const result = Function('"use strict"; return (' + expression + ')')();
+    meh.textContent = result;
+  } catch (e) {
+    meh.textContent = 'Error';
+  }
+};
+
+const isBalanced = str => {
+  const stack = [];
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === '(') stack.push('(');
+    if (str[i] === ')') {
+      if (!stack.pop()) return false;
     }
   }
-    }
-
-     const expr = window.location.pathname
-    .split('/').join('')
-    .replace('calc', '');
-  calc(expr);
- 
+  return stack.length === 0;
+};
 </script>
+
+</body>
+    </html>
