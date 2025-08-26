@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="shortcut icon" href="https://ise.web.app/fa/20.png" type="image/x-icon">
+<title>calkyo</title>
+</head>
+<body>
+
+    <style>
+:root {
+background: black;
+color:white;
+font-family: sans-serif;
+}
+
+::placeholder {
+color: #222;
+}
+
+::-webkit-scrollbar {
+background: black;
+}
+::-webkit-scrollbar-thumb {
+background: #222;
+}
+
+* {
+background: transparent;
+outline: unset;
+border: unset;
+
+}
+
+body {
+display:flex;
+flex-direction:column; 
+gap:10px;
+margin:auto;
+height:100svh;
+max-width: 499px;
+justify-content:center;
+place-content:center;
+align-content:center;
+}
+
+span {
+display:flex;
+flex-direction:row; 
+gap:10px;
+justify-content:center;
+place-content:center;
+align-content:center;
+}
+
+span[out] {
+display:block;
+flex-direction:row; 
+gap:10px;
+justify-content:center;
+place-content:center;
+align-content:center;
+}
+p {
+    min-width:0in;
+}
+a {
+background-color: rgb(48, 48, 59);
+padding: 0.3in;
+display: flex;
+height:0.1in;
+justify-content:center;
+place-content:center;
+align-content:center;
+flex:1;
+}
+
+[c] {
+background-color: rgb(107, 107, 168);
+}
+
+[p] {
+background-color: rgb(57, 57, 156);
+}
+
+[s] a {
+width:auto;
+max-width: 599px;
+flex:1;
+}
+
+    </style>
+
+
+<span out>
+<p >Result</p>
+<p id="meh">hi</p>
+</span>
+
+<span s>
+<a onmousedown="
+meh.textContent=''
+">C</a>
+<a zz onmousedown="
+meh.textContent+='/'
+">/</a>
+</span>
+<span>
+    <a onmousedown="
+meh.textContent+='7'
+">7</a>
+    <a onmousedown="meh.textContent+='8'">8</a>
+    <a onmousedown="meh.textContent+='9'">9</a>
+    <a p onmousedown="meh.textContent+='*'">x</a>
+</span>
+<span>
+    <a onmousedown="meh.textContent+='4'">4</a>
+    <a onmousedown="meh.textContent+='5'">5</a>
+    <a onmousedown="meh.textContent+='6'">6</a>
+    <a p onmousedown="meh.textContent+='-'">-</a>
+</span>
+<span>
+    <a onmousedown="meh.textContent+='1'">1</a>
+    <a onmousedown="meh.textContent+='2'">2</a>
+    <a onmousedown="meh.textContent+='3'">3</a>
+    <a p onmousedown="meh.textContent+='+'">+</a>
+</span>
+<span>
+
+    <a onmousedown="meh.textContent+='0'">0</a>
+    <a p onmousedown="meh.textContent=
+    eval(meh.textContent)
+    ">=</a>
+</span>
+
+<script>
+meh.textContent=eval(window.location.pathname.split('/').join(''));
+</script>
