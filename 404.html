@@ -130,14 +130,12 @@ meh.textContent+='7'
 <span>
 
     <a onmousedown="meh.textContent+='0'">0</a>
-    <a p onmousedown="meh.textContent=
-    calc(meh.textContent)
-    ">=</a>
+    <a p onmousedown="calc(meh.textContent">=</a>
 </span>
 
 <script>
     const calc=ans=> {
-         if (/^[0-9+\-*/.]+$/.test(ans)) {
+         if (/^[0-9+\-*/().]+$/.test(ans)) {
     try {
       meh.textContent = new Function(`return ${ans}`)();
     } catch {
