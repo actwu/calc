@@ -3,8 +3,37 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Calkyo</title>
+<meta name="description" content="Calkyo is calculator coded with web 4">
+<meta name="keywords" content="Calkyo, calculator">
+<meta name="author" content="nai">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+<meta name="referrer" content="no-referrer-when-downgrade">
 <link rel="shortcut icon" href="https://ise.web.app/fa/20.png" type="image/x-icon">
-<title>calkyo</title>
+
+<link rel="canonical" href="">
+<meta property="og:title" content="Calkyo">
+<meta property="og:description" content="Calkyo is calculator coded with web 4">
+<meta property="og:image" content="">
+<meta property="og:url" content="">
+<meta property="og:type" content="">
+<meta property="og:site_name" content="">
+<meta property="og:locale" content="">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Calkyo">
+<meta name="twitter:description" content="Calkyo is calculator coded with web 4">
+<meta name="twitter:image" content="">
+<meta name="twitter:site" content="">
+<meta name="twitter:creator" content="">
+
+<meta name='google-site-verification' content=''>
+<meta name='msvalidate.01' content=''>
+
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"","url":"","logo":"","description":"Calkyo is calculator coded with web 4"}</script>
 <style>
 :root {
   background: black;
@@ -64,7 +93,7 @@ p {
   min-width: 0in;
 }
 
-a {
+tap {
   background-color: rgb(48, 48, 59);
   padding: 0.3in;
   display: flex;
@@ -94,35 +123,35 @@ a {
 <body>
 
 <span out>
-  <p>Result</p>
-  <p id="meh"></p>
+  <p aria-hidden="true">Result</p>
+  <p id="meh" aria="result"></p>
 </span>
 
 <span s>
-  <a c onmousedown="press(this)">C</a>
-  <a onmousedown="press(this)">/</a>
+  <tap c onmousedown="press(this)" aria="C">C</tap>
+  <tap onmousedown="press(this)" aria="/">/</tap>
 </span>
 <span>
-  <a onmousedown="press(this)">7</a>
-  <a onmousedown="press(this)">8</a>
-  <a onmousedown="press(this)">9</a>
-  <a p onmousedown="press(this)">x</a>
+  <tap onmousedown="press(this)" aria="7">7</tap>
+  <tap onmousedown="press(this)" aria="8">8</tap>
+  <tap onmousedown="press(this)" aria="9">9</tap>
+  <tap p onmousedown="press(this)" aria="x">x</tap>
 </span>
 <span>
-  <a onmousedown="press(this)">4</a>
-  <a onmousedown="press(this)">5</a>
-  <a onmousedown="press(this)">6</a>
-  <a p onmousedown="press(this)">-</a>
+  <tap onmousedown="press(this)" aria="4">4</tap>
+  <tap onmousedown="press(this)" aria="5">5</tap>
+  <tap onmousedown="press(this)" aria="6">6</tap>
+  <tap p onmousedown="press(this)" aria="-">-</tap>
 </span>
 <span>
-  <a onmousedown="press(this)">1</a>
-  <a onmousedown="press(this)">2</a>
-  <a onmousedown="press(this)">3</a>
-  <a p onmousedown="press(this)">+</a>
+  <tap onmousedown="press(this)" aria="1">1</tap>
+  <tap onmousedown="press(this)" aria="2">2</tap>
+  <tap onmousedown="press(this)" aria="3">3</tap>
+  <tap p onmousedown="press(this)" aria="+">+</tap>
 </span>
 <span>
-  <a onmousedown="press(this)">0</a>
-  <a p onmousedown="press(this)">=</a>
+  <tap onmousedown="press(this)" aria="0">0</tap>
+  <tap p onmousedown="press(this)" aria="=">=</tap>
 </span>
 
 <script>
